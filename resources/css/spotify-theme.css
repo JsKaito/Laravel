@@ -1,0 +1,419 @@
+/* ===== TEMA SPOTIFY - OSCURO MODERNO CON CIANES ===== */
+
+:root {
+    --color-primary: #1db954;
+    --color-primary-dark: #1ed760;
+    --color-secondary: #0f7ec5;
+    --color-secondary-dark: #0a5a9f;
+    --color-background: #0f0f0f;
+    --color-surface: #181818;
+    --color-surface-light: #282828;
+    --color-cyan: #00d4ff;
+    --color-cyan-dark: #0099cc;
+    --color-text: #ffffff;
+    --color-text-secondary: #b3b3b3;
+}
+
+body {
+    background-color: var(--color-background) !important;
+    color: var(--color-text) !important;
+}
+
+.wrapper {
+    background-color: var(--color-background) !important;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-light) 100%) !important;
+    border-bottom: 2px solid var(--color-cyan) !important;
+    box-shadow: 0 2px 10px rgba(0, 212, 255, 0.2) !important;
+}
+
+.navbar-nav .nav-link {
+    color: var(--color-text-secondary) !important;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--color-cyan) !important;
+    text-shadow: 0 0 10px var(--color-cyan);
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-background) 100%) !important;
+    border-right: 2px solid var(--color-cyan-dark) !important;
+}
+
+.sidebar-nav .nav-link {
+    color: var(--color-text-secondary) !important;
+    transition: all 0.3s ease;
+}
+
+.sidebar-nav .nav-link:hover,
+.sidebar-nav .nav-link.active {
+    background-color: rgba(0, 212, 255, 0.1) !important;
+    color: var(--color-cyan) !important;
+    border-left: 3px solid var(--color-cyan) !important;
+    padding-left: calc(1rem - 3px) !important;
+}
+
+.sidebar-nav .nav-link i {
+    color: var(--color-cyan-dark);
+    transition: all 0.3s ease;
+}
+
+.sidebar-nav .nav-link:hover i,
+.sidebar-nav .nav-link.active i {
+    color: var(--color-cyan);
+    text-shadow: 0 0 10px var(--color-cyan);
+}
+
+/* ===== CARDS ===== */
+.card {
+    background: var(--color-surface) !important;
+    border: 1px solid var(--color-surface-light) !important;
+    color: var(--color-text) !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1) !important;
+}
+
+.card:hover {
+    border-color: var(--color-cyan) !important;
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2) !important;
+    transform: translateY(-2px);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--color-surface-light) 0%, rgba(0, 212, 255, 0.1) 100%) !important;
+    border-bottom: 2px solid var(--color-cyan-dark) !important;
+    color: var(--color-cyan) !important;
+}
+
+.card-body {
+    background-color: var(--color-surface) !important;
+    color: var(--color-text) !important;
+}
+
+.card-footer {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, var(--color-surface) 100%) !important;
+    border-top: 1px solid var(--color-surface-light) !important;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.badge-primary {
+    background: linear-gradient(135deg, #0f7ec5 0%, #0a5a9f 100%) !important;
+}
+
+.badge-success {
+    background: linear-gradient(135deg, #1db954 0%, #1ed760 100%) !important;
+}
+
+.badge-warning {
+    background: linear-gradient(135deg, #ff9500 0%, #ffb84d 100%) !important;
+    color: #000 !important;
+}
+
+.badge-danger {
+    background: linear-gradient(135deg, #ff1744 0%, #ff5252 100%) !important;
+}
+
+.badge-info {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%) !important;
+}
+
+/* ===== BOTONES ===== */
+.btn {
+    transition: all 0.3s ease;
+    font-weight: 600;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0f7ec5 0%, #0a5a9f 100%) !important;
+    color: white !important;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0a5a9f 0%, #053f6f 100%) !important;
+    box-shadow: 0 0 20px rgba(15, 126, 197, 0.5) !important;
+    color: var(--color-cyan) !important;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #1db954 0%, #1ed760 100%) !important;
+    color: white !important;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #1ed760 0%, #1aed6b 100%) !important;
+    box-shadow: 0 0 20px rgba(29, 185, 84, 0.5) !important;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #ff9500 0%, #ffb84d 100%) !important;
+    color: #000 !important;
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, #ffb84d 0%, #ffc266 100%) !important;
+    box-shadow: 0 0 20px rgba(255, 149, 0, 0.5) !important;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ff1744 0%, #ff5252 100%) !important;
+    color: white !important;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #ff5252 0%, #ff6e6e 100%) !important;
+    box-shadow: 0 0 20px rgba(255, 23, 68, 0.5) !important;
+}
+
+.btn-info {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%) !important;
+    color: white !important;
+}
+
+.btn-info:hover {
+    background: linear-gradient(135deg, #0099cc 0%, #0066aa 100%) !important;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5) !important;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, var(--color-surface-light) 0%, var(--color-surface) 100%) !important;
+    color: var(--color-text) !important;
+    border: 1px solid var(--color-cyan-dark) !important;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(0, 212, 255, 0.1) 100%) !important;
+    border-color: var(--color-cyan) !important;
+    color: var(--color-cyan) !important;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3) !important;
+}
+
+.btn-xs {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+}
+
+/* ===== TABLAS ===== */
+.table {
+    color: var(--color-text) !important;
+}
+
+.table thead {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.05) 100%) !important;
+}
+
+.table thead th {
+    border-bottom: 2px solid var(--color-cyan) !important;
+    color: var(--color-cyan) !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid var(--color-surface-light) !important;
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(0, 212, 255, 0.1) !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+.table-dark {
+    background-color: var(--color-surface-light) !important;
+    color: var(--color-cyan) !important;
+}
+
+/* ===== FORMULARIOS ===== */
+.form-control,
+.form-select {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid var(--color-surface-light) !important;
+    color: var(--color-text) !important;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: rgba(0, 212, 255, 0.05) !important;
+    border-color: var(--color-cyan) !important;
+    color: var(--color-text) !important;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3) !important;
+}
+
+.form-control::placeholder {
+    color: var(--color-text-secondary) !important;
+}
+
+label {
+    color: var(--color-text) !important;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group-text {
+    background-color: rgba(0, 212, 255, 0.1) !important;
+    border: 1px solid var(--color-cyan-dark) !important;
+    color: var(--color-cyan) !important;
+}
+
+/* ===== ALERTS ===== */
+.alert {
+    border: 1px solid;
+    border-radius: 8px;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, rgba(29, 185, 84, 0.2) 0%, rgba(29, 185, 84, 0.1) 100%) !important;
+    border-color: #1db954 !important;
+    color: #1ed760 !important;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, rgba(255, 23, 68, 0.2) 0%, rgba(255, 23, 68, 0.1) 100%) !important;
+    border-color: #ff1744 !important;
+    color: #ff5252 !important;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, rgba(255, 149, 0, 0.2) 0%, rgba(255, 149, 0, 0.1) 100%) !important;
+    border-color: #ff9500 !important;
+    color: #ffb84d !important;
+}
+
+.alert-info {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.1) 100%) !important;
+    border-color: #00d4ff !important;
+    color: #00d4ff !important;
+}
+
+/* ===== TITULO Y ENCABEZADOS ===== */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text) !important;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+h1 {
+    color: var(--color-cyan) !important;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+.content-header {
+    border-bottom: 2px solid var(--color-cyan-dark) !important;
+    padding-bottom: 1rem;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--color-cyan-dark) 0%, var(--color-cyan) 100%);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--color-cyan) 0%, #00ffff 100%);
+}
+
+/* ===== TRANSICIONES SUAVES ===== */
+* {
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* ===== DL ROWS (DESCRIPCIONES) ===== */
+dl dt {
+    color: var(--color-cyan) !important;
+    font-weight: 700;
+}
+
+dl dd {
+    color: var(--color-text) !important;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.content {
+    background-color: var(--color-background) !important;
+}
+
+/* ===== SECTION HEADERS ===== */
+.section-header {
+    color: var(--color-cyan) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+/* ===== LINKS ===== */
+a {
+    color: var(--color-cyan) !important;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #00ffff !important;
+    text-shadow: 0 0 10px var(--color-cyan);
+}
+
+/* ===== CUSTOM CLASSES ===== */
+.text-cyan {
+    color: var(--color-cyan) !important;
+}
+
+.text-muted {
+    color: var(--color-text-secondary) !important;
+}
+
+.bg-dark {
+    background-color: var(--color-background) !important;
+}
+
+.border-cyan {
+    border-color: var(--color-cyan) !important;
+    border-width: 2px;
+}
