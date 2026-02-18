@@ -13,42 +13,34 @@ class ClientesSeeder extends Seeder
     public function run(): void
     {
         Clientes::create([
-            'nombre' => 'Juan García López',
-            'email' => 'juan.garcia@example.com',
-            'telefono' => '555-0001',
-            'ciudad' => 'Madrid',
+            'nombre' => 'Sofía Ramírez Torres',
+            'email' => 'sofia.ramirez2026@example.com',
+            'telefono' => '555-0006',
+            'ciudad' => 'Granada',
             'pais' => 'España'
         ]);
 
         Clientes::create([
-            'nombre' => 'María Rodríguez Martínez',
-            'email' => 'maria.rodriguez@example.com',
-            'telefono' => '555-0002',
-            'ciudad' => 'Barcelona',
+            'nombre' => 'Miguel Ángel Ruiz',
+            'email' => 'miguel.ruiz2026@example.com',
+            'telefono' => '555-0007',
+            'ciudad' => 'Zaragoza',
             'pais' => 'España'
         ]);
 
         Clientes::create([
-            'nombre' => 'Carlos Fernández González',
-            'email' => 'carlos.fernandez@example.com',
-            'telefono' => '555-0003',
-            'ciudad' => 'Valencia',
+            'nombre' => 'Lucía Morales Díaz',
+            'email' => 'lucia.morales2026@example.com',
+            'telefono' => '555-0008',
+            'ciudad' => 'Málaga',
             'pais' => 'España'
         ]);
 
         Clientes::create([
-            'nombre' => 'Ana López Sánchez',
-            'email' => 'ana.lopez@example.com',
-            'telefono' => '555-0004',
-            'ciudad' => 'Sevilla',
-            'pais' => 'España'
-        ]);
-
-        Clientes::create([
-            'nombre' => 'Luis Martínez Pérez',
-            'email' => 'luis.martinez@example.com',
-            'telefono' => '555-0005',
-            'ciudad' => 'Bilbao',
+            'nombre' => 'Javier Herrera Castro',
+            'email' => 'javier.herrera2026@example.com',
+            'telefono' => '555-0009',
+            'ciudad' => 'Alicante',
             'pais' => 'España'
         ]);
     }
