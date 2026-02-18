@@ -3,12 +3,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Clientes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ClientesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $clientes = Clientes::all();
+        $clientes = Clientes::paginate(10);
         return view('clientes.index', compact('clientes'));
     }
 
@@ -25,9 +31,16 @@ class ClientesController extends Controller
             'email' => 'required|email|unique:clientes,email',
             'telefono' => 'nullable|string|max:20',
             'direccion' => 'nullable|string|max:255',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        Clientes::create($request->all());
+        $data = $request->except('foto');
+
+        if ($request->hasFile('foto')) {
+            $data['foto'] = $request->file('foto')->store('clientes/fotos', 'public');
+        }
+
+        Clientes::create($data);
 
         return redirect()->route('clientes.index')
                          ->with('success', 'Cliente creado exitosamente.');
@@ -51,9 +64,20 @@ class ClientesController extends Controller
             'email' => 'required|email|unique:clientes,email,' . $cliente->id,
             'telefono' => 'nullable|string|max:20',
             'direccion' => 'nullable|string|max:255',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $cliente->update($request->all());
+        $data = $request->except('foto');
+
+        if ($request->hasFile('foto')) {
+            // Eliminar foto anterior si existe
+            if ($cliente->foto) {
+                Storage::disk('public')->delete($cliente->foto);
+            }
+            $data['foto'] = $request->file('foto')->store('clientes/fotos', 'public');
+        }
+
+        $cliente->update($data);
 
         return redirect()->route('clientes.index')
                          ->with('success', 'Cliente actualizado exitosamente.');
@@ -61,6 +85,10 @@ class ClientesController extends Controller
 
     public function destroy(Clientes $cliente)
     {
+        if ($cliente->foto) {
+            Storage::disk('public')->delete($cliente->foto);
+        }
+
         $cliente->delete();
 
         return redirect()->route('clientes.index')

@@ -8,14 +8,37 @@
 
 @section('content')
     <div class="row">
+        <div class="col-md-4">
+            <div class="card border-cyan">
+                <div class="card-body text-center">
+                    @if($producto->imagen)
+                        <img src="{{ asset('storage/' . $producto->imagen) }}" alt="Imagen del producto" class="img-fluid img-thumbnail" style="max-height: 200px;">
+                    @else
+                        <div class="text-muted py-5">
+                            <i class="fas fa-image fa-3x"></i>
+                            <p class="mt-2">Sin imagen</p>
+                        </div>
+                    @endif
+                </div>
+                @if($producto->archivo_pdf)
+                <div class="card-footer text-center">
+                    <a href="{{ asset('storage/' . $producto->archivo_pdf) }}" target="_blank" class="btn btn-outline-danger">
+                        <i class="fas fa-file-pdf"></i> Ver PDF del Producto
+                    </a>
+                </div>
+                @endif
+            </div>
+        </div>
         <div class="col-md-8">
             <div class="card border-cyan">
                 <div class="card-header">
                     <h3 class="card-title text-cyan">Información del Producto</h3>
                     <div class="card-tools">
+                        @can('editar-productos')
                         <a href="{{ route('producto.edit', $producto->id) }}" class="btn btn-info btn-sm">
                             <i class="fas fa-edit"></i> Editar
                         </a>
+                        @endcan
                         <a href="{{ route('producto.index') }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-arrow-left"></i> Volver
                         </a>

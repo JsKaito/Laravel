@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::paginate(10);
         return view('categoria.index', compact('categorias'));
     }
 

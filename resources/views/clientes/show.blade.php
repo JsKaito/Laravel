@@ -8,14 +8,29 @@
 
 @section('content')
     <div class="row">
+        <div class="col-md-4">
+            <div class="card border-cyan">
+                <div class="card-body text-center">
+                    @if($cliente->foto)
+                        <img src="{{ asset('storage/' . $cliente->foto) }}" alt="Foto del cliente" class="img-circle img-fluid" style="max-width: 150px; height: 150px; object-fit: cover;">
+                    @else
+                        <img src="{{ asset('vendor/adminlte/dist/img/user2-160x160.jpg') }}" alt="Sin foto" class="img-circle img-fluid" style="max-width: 150px;">
+                    @endif
+                    <h4 class="mt-3"><strong>{{ $cliente->nombre }} {{ $cliente->apellido }}</strong></h4>
+                    <p class="text-muted">{{ $cliente->email }}</p>
+                </div>
+            </div>
+        </div>
         <div class="col-md-8">
             <div class="card border-cyan">
                 <div class="card-header">
                     <h3 class="card-title text-cyan">Información del Cliente</h3>
                     <div class="card-tools">
+                        @can('editar-clientes')
                         <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-info btn-sm">
                             <i class="fas fa-edit"></i> Editar
                         </a>
+                        @endcan
                         <a href="{{ route('clientes.index') }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-arrow-left"></i> Volver
                         </a>

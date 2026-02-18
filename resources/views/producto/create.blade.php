@@ -13,7 +13,7 @@
                 <div class="card-header">
                     <h3 class="card-title text-cyan"><i class="fas fa-box"></i> Datos del Producto</h3>
                 </div>
-                <form action="{{ route('producto.store') }}" method="POST">
+                <form action="{{ route('producto.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
@@ -53,6 +53,36 @@
                             <input type="number" class="form-control @error('stock') is-invalid @enderror" 
                                    id="stock" name="stock" value="{{ old('stock') }}" placeholder="0" required>
                             @error('stock')
+                                <span class="invalid-feedback d-block">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="imagen"><i class="fas fa-image"></i> Imagen del Producto</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input @error('imagen') is-invalid @enderror" 
+                                           id="imagen" name="imagen" accept="image/*">
+                                    <label class="custom-file-label" for="imagen">Seleccionar imagen...</label>
+                                </div>
+                            </div>
+                            <small class="form-text text-muted">Formatos: JPEG, PNG, JPG, GIF. Máximo: 2MB</small>
+                            @error('imagen')
+                                <span class="invalid-feedback d-block">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="archivo_pdf"><i class="fas fa-file-pdf"></i> Archivo PDF del Producto</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input @error('archivo_pdf') is-invalid @enderror" 
+                                           id="archivo_pdf" name="archivo_pdf" accept=".pdf">
+                                    <label class="custom-file-label" for="archivo_pdf">Seleccionar PDF...</label>
+                                </div>
+                            </div>
+                            <small class="form-text text-muted">Formato: PDF. Máximo: 5MB</small>
+                            @error('archivo_pdf')
                                 <span class="invalid-feedback d-block">{{ $message }}</span>
                             @enderror
                         </div>

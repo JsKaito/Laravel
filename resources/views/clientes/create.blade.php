@@ -13,7 +13,7 @@
                 <div class="card-header">
                     <h3 class="card-title text-cyan"><i class="fas fa-user-plus"></i> Datos del Cliente</h3>
                 </div>
-                <form action="{{ route('clientes.store') }}" method="POST">
+                <form action="{{ route('clientes.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
@@ -57,6 +57,21 @@
                             <textarea class="form-control @error('direccion') is-invalid @enderror" 
                                       id="direccion" name="direccion" rows="3" placeholder="Calle, número, ciudad">{{ old('direccion') }}</textarea>
                             @error('direccion')
+                                <span class="invalid-feedback d-block">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="foto"><i class="fas fa-camera"></i> Foto del Cliente</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input @error('foto') is-invalid @enderror" 
+                                           id="foto" name="foto" accept="image/*">
+                                    <label class="custom-file-label" for="foto">Seleccionar imagen...</label>
+                                </div>
+                            </div>
+                            <small class="form-text text-muted">Formatos: JPEG, PNG, JPG, GIF. Máximo: 2MB</small>
+                            @error('foto')
                                 <span class="invalid-feedback d-block">{{ $message }}</span>
                             @enderror
                         </div>

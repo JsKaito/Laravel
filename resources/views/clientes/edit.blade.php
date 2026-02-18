@@ -13,7 +13,7 @@
             <div class="card-header">
                 <h3 class="card-title text-cyan">Formulario de Edición</h3>
             </div>
-            <form action="{{ route('clientes.update', $cliente->id) }}" method="POST">
+            <form action="{{ route('clientes.update', $cliente->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 
@@ -59,6 +59,27 @@
                         <textarea class="form-control @error('direccion') is-invalid @enderror" 
                             id="direccion" name="direccion" rows="3">{{ old('direccion', $cliente->direccion) }}</textarea>
                         @error('direccion')
+                            <span class="invalid-feedback d-block">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="foto"><i class="fas fa-camera"></i> Foto del Cliente</label>
+                        @if($cliente->foto)
+                            <div class="mb-2">
+                                <img src="{{ asset('storage/' . $cliente->foto) }}" alt="Foto actual" class="img-thumbnail" width="100">
+                                <small class="d-block text-muted">Foto actual</small>
+                            </div>
+                        @endif
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input @error('foto') is-invalid @enderror" 
+                                       id="foto" name="foto" accept="image/*">
+                                <label class="custom-file-label" for="foto">Seleccionar nueva imagen...</label>
+                            </div>
+                        </div>
+                        <small class="form-text text-muted">Formatos: JPEG, PNG, JPG, GIF. Máximo: 2MB</small>
+                        @error('foto')
                             <span class="invalid-feedback d-block">{{ $message }}</span>
                         @enderror
                     </div>

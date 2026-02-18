@@ -8,9 +8,11 @@
             <h1 class="text-cyan"><i class="fas fa-tags"></i> Categorías</h1>
         </div>
         <div class="col-sm-6 text-right">
+            @can('crear-categorias')
             <a href="{{ route('categoria.create') }}" class="btn btn-warning">
                 <i class="fas fa-plus"></i> Nueva Categoría
             </a>
+            @endcan
         </div>
     </div>
 @stop
@@ -23,19 +25,19 @@
     <div class="card-body">
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-dismissible fade show">
-                <button type="button" class="close" data-dismiss="alert">×</button>
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <strong>Éxito:</strong> {{ $message }}
             </div>
         @endif
 
         <div class="table-responsive">
-            <table class="table table-striped table-hover table-sm">
+            <table id="tablaCategorias" class="table table-striped table-hover table-sm">
                 <thead class="table-dark">
                     <tr>
                         <th style="width: 5%">ID</th>
                         <th style="width: 25%">Nombre</th>
-                        <th style="width: 60%">Descripción</th>
-                        <th style="width: 10%">Acciones</th>
+                        <th style="width: 55%">Descripción</th>
+                        <th style="width: 15%">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,9 +50,12 @@
                                 <a href="{{ route('categoria.show', $cat->id) }}" class="btn btn-xs btn-info" title="Ver">
                                     <i class="fas fa-eye"></i>
                                 </a>
+                                @can('editar-categorias')
                                 <a href="{{ route('categoria.edit', $cat->id) }}" class="btn btn-xs btn-warning" title="Editar">
                                     <i class="fas fa-edit"></i>
                                 </a>
+                                @endcan
+                                @can('eliminar-categorias')
                                 <form action="{{ route('categoria.destroy', $cat->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
@@ -58,6 +63,7 @@
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
+                                @endcan
                             </td>
                         </tr>
                     @empty
@@ -70,6 +76,31 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="mt-3">
+            {{ $categorias->links() }}
+        </div>
     </div>
 </div>
+@stop
+
+@section('js')
+<script>
+    $(document).ready(function () {
+        $('#tablaCategorias').DataTable({
+            "paging": false,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": false,
+            "autoWidth": false,
+            "responsive": true,
+            "language": {
+                "search": "Buscar:",
+                "zeroRecords": "No se encontraron resultados",
+                "emptyTable": "No hay datos disponibles",
+            }
+        });
+    });
+</script>
 @stop

@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 
 class ProveedorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $proveedores = Proveedor::all();
+        $proveedores = Proveedor::paginate(10);
         return view('proveedor.index', compact('proveedores'));
     }
 

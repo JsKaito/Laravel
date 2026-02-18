@@ -13,9 +13,11 @@
                 <div class="card-header">
                     <h3 class="card-title text-cyan">Información de la Orden</h3>
                     <div class="card-tools">
+                        @can('editar-ordenes')
                         <a href="{{ route('orden.edit', $orden->id) }}" class="btn btn-info btn-sm">
                             <i class="fas fa-edit"></i> Editar
                         </a>
+                        @endcan
                         <a href="{{ route('orden.index') }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-arrow-left"></i> Volver
                         </a>

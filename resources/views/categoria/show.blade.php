@@ -13,9 +13,11 @@
                 <div class="card-header">
                     <h3 class="card-title text-cyan">Información de la Categoría</h3>
                     <div class="card-tools">
+                        @can('editar-categorias')
                         <a href="{{ route('categoria.edit', $categoria->id) }}" class="btn btn-info btn-sm">
                             <i class="fas fa-edit"></i> Editar
                         </a>
+                        @endcan
                         <a href="{{ route('categoria.index') }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-arrow-left"></i> Volver
                         </a>

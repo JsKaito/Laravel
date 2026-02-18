@@ -8,9 +8,14 @@ use Illuminate\Http\Request;
 
 class OrdenController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $ordenes = Orden::with('cliente')->get();
+        $ordenes = Orden::with('cliente')->paginate(10);
         return view('orden.index', compact('ordenes'));
     }
 

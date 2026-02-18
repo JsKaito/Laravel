@@ -8,9 +8,11 @@
             <h1 class="text-cyan"><i class="fas fa-shopping-cart"></i> Órdenes</h1>
         </div>
         <div class="col-sm-6 text-right">
+            @can('crear-ordenes')
             <a href="{{ route('orden.create') }}" class="btn btn-info">
                 <i class="fas fa-plus"></i> Nueva Orden
             </a>
+            @endcan
         </div>
     </div>
 @stop
@@ -23,13 +25,13 @@
     <div class="card-body">
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-dismissible fade show">
-                <button type="button" class="close" data-dismiss="alert">×</button>
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <strong>Éxito:</strong> {{ $message }}
             </div>
         @endif
 
         <div class="table-responsive">
-            <table class="table table-striped table-hover table-sm">
+            <table id="tablaOrdenes" class="table table-striped table-hover table-sm">
                 <thead class="table-dark">
                     <tr>
                         <th style="width: 8%">ID</th>
@@ -38,7 +40,7 @@
                         <th style="width: 12%">Total</th>
                         <th style="width: 15%">Estado</th>
                         <th style="width: 15%">Entrega</th>
-                        <th style="width: 10%">Acciones</th>
+                        <th style="width: 15%">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,9 +66,12 @@
                                 <a href="{{ route('orden.show', $orden->id) }}" class="btn btn-xs btn-info" title="Ver">
                                     <i class="fas fa-eye"></i>
                                 </a>
+                                @can('editar-ordenes')
                                 <a href="{{ route('orden.edit', $orden->id) }}" class="btn btn-xs btn-warning" title="Editar">
                                     <i class="fas fa-edit"></i>
                                 </a>
+                                @endcan
+                                @can('eliminar-ordenes')
                                 <form action="{{ route('orden.destroy', $orden->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
@@ -74,6 +79,7 @@
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
+                                @endcan
                             </td>
                         </tr>
                     @empty
@@ -86,6 +92,31 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="mt-3">
+            {{ $ordenes->links() }}
+        </div>
     </div>
 </div>
+@stop
+
+@section('js')
+<script>
+    $(document).ready(function () {
+        $('#tablaOrdenes').DataTable({
+            "paging": false,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": false,
+            "autoWidth": false,
+            "responsive": true,
+            "language": {
+                "search": "Buscar:",
+                "zeroRecords": "No se encontraron resultados",
+                "emptyTable": "No hay datos disponibles",
+            }
+        });
+    });
+</script>
 @stop

@@ -13,9 +13,11 @@
                 <div class="card-header">
                     <h3 class="card-title text-cyan">Información del Proveedor</h3>
                     <div class="card-tools">
+                        @can('editar-proveedores')
                         <a href="{{ route('proveedor.edit', $proveedor->id) }}" class="btn btn-info btn-sm">
                             <i class="fas fa-edit"></i> Editar
                         </a>
+                        @endcan
                         <a href="{{ route('proveedor.index') }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-arrow-left"></i> Volver
                         </a>
